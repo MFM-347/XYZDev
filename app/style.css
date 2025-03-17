@@ -1,0 +1,38 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant hover (&:hover);
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 2rem;
+}
+@utility ta-* {
+  transition-property: all;
+  transition-duration: calc(--value(integer, [integer]) * 0.8ms);
+  transition-timing-function: cubic-bezier(0.3, 0.2, 0, 1);
+}
+*:focus-visible {
+  @apply outline-offset-2 outline-blue-500;
+}
+:focus:not(:focus-visible) {
+  outline: none;
+}
+body {
+  font-family: 'Urbanist', 'Segoe UI', 'Roboto', Arial, sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-optical-sizing: auto;
+}
+*,
+::after,
+::before,
+::backdrop,
+::file-selector-button {
+  @apply ta-125;
+  border-color: var(--color-border, currentColor);
+}
+body {
+  @apply bg-zinc-100 text-gray-900 dark:bg-zinc-900 dark:text-zinc-100;
+}
